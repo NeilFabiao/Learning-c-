@@ -56,3 +56,18 @@ The tests are enhanced by using a `testCases.json` file containing various test 
 2. Open the solution in Visual Studio or Visual Studio Code.
 3. Build the solution and run the tests to validate the behavior.
 
+### References ###
+
+0. The people I collaborated with during the project (chris)
+
+1. Microsoft Docs, [Dependency Injection in .NET](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection)
+
+2. [Mocking in Unit Tests](https://xunit.net/docs/mocking)
+
+3. [xUnit Documentation](https://xunit.net/)
+
+4. Github and various resources online
+
+5. GPT-4-turbo  
+
+
