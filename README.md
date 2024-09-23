@@ -1,6 +1,8 @@
 # C# Program for Bill Calculation Service
 
-![Project Overview](img1.gif)
+<p align="center">
+  <img src="img1.gif" alt="Project Overview">
+</p>
 
 ## Overview
 
