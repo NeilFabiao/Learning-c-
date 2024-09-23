@@ -1,0 +1,14 @@
+/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/bin/Debug/net8.0/Calculator
+/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/bin/Debug/net8.0/Calculator.deps.json
+/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/bin/Debug/net8.0/Calculator.runtimeconfig.json
+/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/bin/Debug/net8.0/Calculator.dll
+/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/bin/Debug/net8.0/Calculator.pdb
+/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/obj/Debug/net8.0/Calculator.GeneratedMSBuildEditorConfig.editorconfig
+/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/obj/Debug/net8.0/Calculator.AssemblyInfoInputs.cache
+/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/obj/Debug/net8.0/Calculator.AssemblyInfo.cs
+/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/obj/Debug/net8.0/Calculator.csproj.CoreCompileInputs.cache
+/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/obj/Debug/net8.0/Calculator.dll
+/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/obj/Debug/net8.0/refint/Calculator.dll
+/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/obj/Debug/net8.0/Calculator.pdb
+/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/obj/Debug/net8.0/Calculator.genruntimeconfig.cache
+/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/obj/Debug/net8.0/ref/Calculator.dll
