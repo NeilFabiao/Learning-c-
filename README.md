@@ -1,5 +1,7 @@
 # C# Program for Bill Calculation Service
 
+![Project Overview](img1.gif)
+
 ## Overview
 
 This C# project showcases the application of **Dependency Injection (DI)** to decouple logic from implementation, facilitating easier testing and maintainability. The program includes a service for adding numbers, a mock service for testing, and a `Bill` class that depends on the number-adding service to calculate the total cost.
