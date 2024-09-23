@@ -58,7 +58,7 @@ The tests are enhanced by using a `testCases.json` file containing various test 
 
 ### References ###
 
-0. The people I collaborated with during the project (chris)
+0. The people I collaborated with during the project (Chris)
 
 1. Microsoft Docs, [Dependency Injection in .NET](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection)
 
@@ -68,6 +68,7 @@ The tests are enhanced by using a `testCases.json` file containing various test 
 
 4. Github and various resources online
 
-5. GPT-4-turbo  
+5. GPT-4-turbo, for guidance and assistance throughout the development process
+
 
 
