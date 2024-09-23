@@ -1,0 +1,52 @@
+[
+  {
+      "Cost1": 19,
+      "Cost2": 30,
+      "ExpectedTotal": 49
+  },
+  {
+      "Cost1": 15,
+      "Cost2": 25,
+      "ExpectedTotal": 40
+  },
+  {
+      "Cost1": 10,
+      "Cost2": 20,
+      "ExpectedTotal": 30
+  },
+  {
+      "Cost1": 50,
+      "Cost2": 70,
+      "ExpectedTotal": 120
+  },
+  {
+      "Cost1": 100,
+      "Cost2": 200,
+      "ExpectedTotal": 300
+  },
+  {
+      "Cost1": 5,
+      "Cost2": 15,
+      "ExpectedTotal": 20
+  },
+  {
+      "Cost1": 12,
+      "Cost2": 8,
+      "ExpectedTotal": 20
+  },
+  {
+      "Cost1": 30,
+      "Cost2": 25,
+      "ExpectedTotal": 55
+  },
+  {
+      "Cost1": 90,
+      "Cost2": 10,
+      "ExpectedTotal": 100
+  },
+  {
+      "Cost1": 44,
+      "Cost2": 56,
+      "ExpectedTotal": 100
+  }
+]
