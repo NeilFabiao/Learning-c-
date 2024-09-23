@@ -1,4 +1,4 @@
-# C# Program for Bill Calculation Service
+# Learning C#: Bill Calculation Service with Dependency Injection
 
 ## Overview
 
