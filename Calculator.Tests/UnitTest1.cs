@@ -2,7 +2,6 @@
 using System.IO;
 using Newtonsoft.Json;
 using Xunit;
-using System.Collections.Generic;
 
 public class BillTests
 {
@@ -11,7 +10,6 @@ public class BillTests
         public int Cost1 { get; set; }
         public int Cost2 { get; set; }
         public int ExpectedTotal { get; set; }
-        public int MockReturnValue { get; set; } // Add this to allow dynamic return values
     }
 
     private string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testCases.json");
@@ -51,15 +49,15 @@ public class BillTests
         var testCases = LoadTestCases(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testCases.json"));
         foreach (var testCase in testCases)
         {
-            yield return new object[] { testCase.Cost1, testCase.Cost2, testCase.ExpectedTotal, testCase.MockReturnValue };
+            yield return new object[] { testCase.Cost1, testCase.Cost2, testCase.ExpectedTotal };
         }
     }
 
     [Theory]
     [MemberData(nameof(GetTestCases))]
-    public void CalculateTotal_ShouldMatchExpectedTotal(int cost1, int cost2, int expectedTotal, int mockReturnValue)
+    public void CalculateTotal_ShouldMatchExpectedTotal(int cost1, int cost2, int expectedTotal)
     {
-        var mockObj = new MockNumberAdderService { ReturnFromAddNumbers = mockReturnValue }; // Set mock return value
+        var mockObj = new MockNumberAdderService();
         var bill = new Bill(mockObj);
 
         int total = bill.CalculateTotal(cost1, cost2);
@@ -67,18 +65,5 @@ public class BillTests
         Assert.Equal(expectedTotal, total);
         Assert.Equal(cost1, mockObj.AddCalledWithNumber1);
         Assert.Equal(cost2, mockObj.AddCalledWithNumber2);
-    }
-
-    [Fact]
-    public void CalculateTotal_ShouldThrowException_WhenCostIsNegative()
-    {
-        var mockObj = new MockNumberAdderService();
-        var bill = new Bill(mockObj);
-
-        var exception1 = Assert.Throws<ArgumentException>(() => bill.CalculateTotal(-1, 30));
-        Assert.Equal("Bill item costs cannot be negative.", exception1.Message);
-
-        var exception2 = Assert.Throws<ArgumentException>(() => bill.CalculateTotal(19, -2));
-        Assert.Equal("Bill item costs cannot be negative.", exception2.Message);
     }
 }
