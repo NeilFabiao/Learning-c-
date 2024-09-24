@@ -1,69 +1,71 @@
 ﻿// ConsoleApplication_Final/Calculator/Program.cs
 using System;
 
-// Interface for adding numbers
-// Defines a service for adding two numbers together.
+// Interface for basic number operations
 public interface INumberAdderService {
     int AddNumbers(int number1, int number2);
 }
 
 // Real service implementation
-// Implements the number adding service by returning the sum of two numbers.
 public class NumberAdderService : INumberAdderService {
     public int AddNumbers(int number1, int number2) {
         return number1 + number2;
     }
 }
 
-// Class that uses the number adding service
-// This class depends on INumberAdderService to calculate the total of two bill items.
+// Bill class depending on INumberAdderService
 public class Bill {
-    private readonly INumberAdderService numberAddingService;
+    private readonly INumberAdderService _numberAddingService;
 
-    // Constructor injects an implementation of INumberAdderService.
     public Bill(INumberAdderService numberAddingService) {
-        this.numberAddingService = numberAddingService;
+        _numberAddingService = numberAddingService;
     }
 
-    // Calculates the total cost by using the AddNumbers method from the injected service.
+    // Calculates the total bill
     public int CalculateTotal(int billItemCost1, int billItemCost2) {
-        return this.numberAddingService.AddNumbers(billItemCost1, billItemCost2);
+        if (billItemCost1 < 0 || billItemCost2 < 0)
+            throw new ArgumentException("Bill item costs cannot be negative.");
+        
+        return _numberAddingService.AddNumbers(billItemCost1, billItemCost2);
     }
 }
 
-// Mock service for testing
-// Simulates the number adding service for unit testing without relying on the real implementation.
+// Mock service for unit testing
 public class MockNumberAdderService : INumberAdderService {
-    // Stores the values that were passed into AddNumbers for later verification.
     public int? AddCalledWithNumber1 { get; private set; }
     public int? AddCalledWithNumber2 { get; private set; }
 
-    // Mimics the real service's AddNumbers method while capturing the inputs for testing.
+    // Property to allow setting the return value
+    public int ReturnFromAddNumbers { get; set; } = 100; // Default to 100
+
     public int AddNumbers(int number1, int number2) {
         AddCalledWithNumber1 = number1;
         AddCalledWithNumber2 = number2;
-        return number1 + number2; // Returns the sum, just like the real service, to keep the behavior consistent for testing.
+        return ReturnFromAddNumbers; // Return the value set by the property
     }
 }
 
-// Usage in main program
+// Main program
 class Program {
     static void Main(string[] args) {
-        // Using the real service
+        // Using real service
         Bill bill = new Bill(new NumberAdderService());
-        int total = bill.CalculateTotal(42, 58); // Calculates total using real values
-        Console.WriteLine($"Total using real service: {total}"); // Expected output: 100 (42 + 58)
+        int total = bill.CalculateTotal(42, 58); 
+        Console.WriteLine($"Total using real service: {total}"); // Expected: 100
 
-        // Using the mock service
-        MockNumberAdderService mockObj = new MockNumberAdderService();
-        Bill mockBill = new Bill(mockObj);
-        int mockTotal = mockBill.CalculateTotal(49, 51); // Using mock values
-        Console.WriteLine($"Total using mock service: {mockTotal}"); // Expected output: 100 (49 + 51)
+        // Using mock service
+        MockNumberAdderService mockService = new MockNumberAdderService();
+        Bill mockBill = new Bill(mockService);
+        int mockTotal = mockBill.CalculateTotal(49, 51); 
+        Console.WriteLine($"Total using mock service: {mockTotal}"); // Expected: 100
 
-        // Assertions for testing
-        // Output captured values to verify that the mock was called with correct arguments.
-        Console.WriteLine($"Mock Add Called With Number1: {mockObj.AddCalledWithNumber1}"); // Should output 49
-        Console.WriteLine($"Mock Add Called With Number2: {mockObj.AddCalledWithNumber2}"); // Should output 51
+        // Change the return value for different test scenarios
+        mockService.ReturnFromAddNumbers = 150; // Set a different return value
+        int modifiedTotal = mockBill.CalculateTotal(49, 51); 
+        Console.WriteLine($"Modified total using mock service: {modifiedTotal}"); // Expected: 150
+
+        // Verify mock was called with correct values
+        Console.WriteLine($"Mock Add Called With Number1: {mockService.AddCalledWithNumber1}"); // Expected: 49
+        Console.WriteLine($"Mock Add Called With Number2: {mockService.AddCalledWithNumber2}"); // Expected: 51
     }
 }
-

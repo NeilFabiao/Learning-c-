@@ -2,30 +2,30 @@
 using System.IO;
 using Newtonsoft.Json;
 using Xunit;
+using System.Collections.Generic;
 
 public class BillTests
 {
-    // Class representing a test case with two costs and the expected total.
     public class TestCase
     {
-        public int Cost1 { get; set; } // First bill item cost.
-        public int Cost2 { get; set; } // Second bill item cost.
-        public int ExpectedTotal { get; set; } // Expected total after adding both costs.
+        public int Cost1 { get; set; }
+        public int Cost2 { get; set; }
+        public int ExpectedTotal { get; set; }
+        public int MockReturnValue { get; set; } // Add this to allow dynamic return values
     }
 
-    // File path to the JSON file containing test cases.
     private string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testCases.json");
 
-    // Method to load test cases from a JSON file.
-    private TestCase[] LoadTestCases(string filePath)
+    private static TestCase[] LoadTestCases(string filePath)
     {
-        // Read the JSON file content.
-        string json = File.ReadAllText(filePath);
-        
-        // Deserialize the JSON content into an array of TestCase objects.
-        var testCases = JsonConvert.DeserializeObject<TestCase[]>(json);
+        if (!File.Exists(filePath))
+        {
+            throw new FileNotFoundException($"Test cases file not found at {filePath}");
+        }
 
-        // Throw an exception if deserialization fails.
+        string json = File.ReadAllText(filePath);
+        var testCases = JsonConvert.DeserializeObject<TestCase[]>(json);
+        
         if (testCases == null)
         {
             throw new InvalidDataException("Deserialized test cases are null.");
@@ -34,45 +34,51 @@ public class BillTests
         return testCases;
     }
 
-    // Test to ensure CalculateTotal calls AddNumbers with the correct parameters.
     [Fact]
     public void CalculateTotal_ShouldCallAddNumbers_WithCorrectParameters()
     {
-        // Arrange: Create a mock service and Bill instance.
         var mockObj = new MockNumberAdderService();
         var bill = new Bill(mockObj);
 
-        // Act: Call CalculateTotal with two test values (19, 30).
         bill.CalculateTotal(19, 30);
 
-        // Assert: Verify that the mock service was called with the correct parameters.
-        Assert.Equal(19, mockObj.AddCalledWithNumber1); // Expect 19 to be passed as the first number.
-        Assert.Equal(30, mockObj.AddCalledWithNumber2); // Expect 30 to be passed as the second number.
+        Assert.Equal(19, mockObj.AddCalledWithNumber1);
+        Assert.Equal(30, mockObj.AddCalledWithNumber2);
     }
 
-    // Test to verify CalculateTotal using test cases from a JSON file.
-    [Fact]
-    public void CalculateTotal_ShouldMatchExpectedTotal_WithJSONTestCases()
+    public static IEnumerable<object[]> GetTestCases()
     {
-        // Arrange: Load test cases from the JSON file.
-        var testCases = LoadTestCases(filePath);
-
-        // Iterate through each test case.
+        var testCases = LoadTestCases(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testCases.json"));
         foreach (var testCase in testCases)
         {
-            // Create a new mock service and Bill instance for each test case.
-            var mockObj = new MockNumberAdderService();
-            var bill = new Bill(mockObj);
-
-            // Act: Calculate the total using the test case values.
-            int total = bill.CalculateTotal(testCase.Cost1, testCase.Cost2);
-
-            // Assert: Check if the result matches the expected total.
-            Assert.Equal(testCase.ExpectedTotal, total);
-            
-            // Verify that the mock service was called with the correct input values.
-            Assert.Equal(testCase.Cost1, mockObj.AddCalledWithNumber1);
-            Assert.Equal(testCase.Cost2, mockObj.AddCalledWithNumber2);
+            yield return new object[] { testCase.Cost1, testCase.Cost2, testCase.ExpectedTotal, testCase.MockReturnValue };
         }
+    }
+
+    [Theory]
+    [MemberData(nameof(GetTestCases))]
+    public void CalculateTotal_ShouldMatchExpectedTotal(int cost1, int cost2, int expectedTotal, int mockReturnValue)
+    {
+        var mockObj = new MockNumberAdderService { ReturnFromAddNumbers = mockReturnValue }; // Set mock return value
+        var bill = new Bill(mockObj);
+
+        int total = bill.CalculateTotal(cost1, cost2);
+
+        Assert.Equal(expectedTotal, total);
+        Assert.Equal(cost1, mockObj.AddCalledWithNumber1);
+        Assert.Equal(cost2, mockObj.AddCalledWithNumber2);
+    }
+
+    [Fact]
+    public void CalculateTotal_ShouldThrowException_WhenCostIsNegative()
+    {
+        var mockObj = new MockNumberAdderService();
+        var bill = new Bill(mockObj);
+
+        var exception1 = Assert.Throws<ArgumentException>(() => bill.CalculateTotal(-1, 30));
+        Assert.Equal("Bill item costs cannot be negative.", exception1.Message);
+
+        var exception2 = Assert.Throws<ArgumentException>(() => bill.CalculateTotal(19, -2));
+        Assert.Equal("Bill item costs cannot be negative.", exception2.Message);
     }
 }

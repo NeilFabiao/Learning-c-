@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/Calculator.csproj",
+      "projectUniqueName": "/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/Calculator.csproj",
       "projectName": "Calculator",
-      "projectPath": "/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/Calculator.csproj",
+      "projectPath": "/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/Calculator.csproj",
       "packagesPath": "/Users/neilfabiao/.nuget/packages/",
-      "outputPath": "/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/obj/",
+      "outputPath": "/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/neilfabiao/.nuget/NuGet/NuGet.Config"

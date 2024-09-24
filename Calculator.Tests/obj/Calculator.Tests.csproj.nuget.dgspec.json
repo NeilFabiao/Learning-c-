@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator.Tests/Calculator.Tests.csproj": {}
+    "/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator.Tests/Calculator.Tests.csproj": {}
   },
   "projects": {
-    "/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator.Tests/Calculator.Tests.csproj": {
+    "/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator.Tests/Calculator.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator.Tests/Calculator.Tests.csproj",
+        "projectUniqueName": "/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator.Tests/Calculator.Tests.csproj",
         "projectName": "Calculator.Tests",
-        "projectPath": "/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator.Tests/Calculator.Tests.csproj",
+        "projectPath": "/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator.Tests/Calculator.Tests.csproj",
         "packagesPath": "/Users/neilfabiao/.nuget/packages/",
-        "outputPath": "/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator.Tests/obj/",
+        "outputPath": "/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator.Tests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/neilfabiao/.nuget/NuGet/NuGet.Config"
@@ -26,8 +26,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/Calculator.csproj": {
-                "projectPath": "/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/Calculator.csproj"
+              "/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/Calculator.csproj": {
+                "projectPath": "/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/Calculator.csproj"
               }
             }
           }
@@ -90,14 +90,14 @@
         }
       }
     },
-    "/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/Calculator.csproj": {
+    "/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/Calculator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/Calculator.csproj",
+        "projectUniqueName": "/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/Calculator.csproj",
         "projectName": "Calculator",
-        "projectPath": "/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/Calculator.csproj",
+        "projectPath": "/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/Calculator.csproj",
         "packagesPath": "/Users/neilfabiao/.nuget/packages/",
-        "outputPath": "/Users/neilfabiao/Downloads/ChrisFinal/Calculator_Final_20Sept/ConsoleApplication_Final/Calculator/obj/",
+        "outputPath": "/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/neilfabiao/.nuget/NuGet/NuGet.Config"
