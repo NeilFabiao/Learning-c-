@@ -1,4 +1,4 @@
-# C# Program for Bill Calculation Service
+# Learning C#: Bill Calculation Service with Dependency Injection
 
 ## Overview
 
@@ -69,6 +69,12 @@ The tests are enhanced by using a `testCases.json` file containing various test 
 4. Github and various resources online
 
 5. GPT-4-turbo, for guidance and assistance throughout the development process
+
+### You made it this far for some Gifs ###
+
+<p align="center">
+  <img src="img1.gif" alt="Project Overview">
+</p>
 
 
 
