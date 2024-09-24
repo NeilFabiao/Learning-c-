@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "+PvJ4xxdVQ8=",
+  "dgSpecHash": "TmBky55OO+o=",
   "success": true,
   "projectFilePath": "/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/Calculator.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/neilfabiao/.nuget/packages/castle.core/5.1.1/castle.core.5.1.1.nupkg.sha512",
+    "/Users/neilfabiao/.nuget/packages/moq/4.20.72/moq.4.20.72.nupkg.sha512",
+    "/Users/neilfabiao/.nuget/packages/system.diagnostics.eventlog/6.0.0/system.diagnostics.eventlog.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

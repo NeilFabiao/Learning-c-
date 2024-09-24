@@ -27,3 +27,10 @@
 /Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/obj/Debug/net8.0/Calculator.pdb
 /Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/obj/Debug/net8.0/Calculator.genruntimeconfig.cache
 /Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/obj/Debug/net8.0/ref/Calculator.dll
+/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/bin/Debug/net8.0/Castle.Core.dll
+/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/bin/Debug/net8.0/Moq.dll
+/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/bin/Debug/net8.0/System.Diagnostics.EventLog.dll
+/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Diagnostics.EventLog.Messages.dll
+/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Diagnostics.EventLog.dll
+/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/obj/Debug/net8.0/Calculator.csproj.AssemblyReference.cache
+/Users/neilfabiao/Documents/GitHub/Learning-c-/Calculator/obj/Debug/net8.0/Calculator.csproj.Up2Date

@@ -1058,6 +1058,9 @@
       },
       "xunit.runner.visualstudio/2.8.2": {},
       "Calculator/1.0.0": {
+        "dependencies": {
+          "Moq": "4.20.72"
+        },
         "runtime": {
           "Calculator.dll": {
             "assemblyVersion": "1.0.0",

@@ -1,7 +1,9 @@
-// ConsoleApplication_Final/Calculator/UnitTest1.cs
+//Calculator.Tests/UnitTest1.cs
+using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using Xunit;
+using Moq; // Import Moq
 
 public class BillTests
 {
@@ -35,13 +37,19 @@ public class BillTests
     [Fact]
     public void CalculateTotal_ShouldCallAddNumbers_WithCorrectParameters()
     {
-        var mockObj = new MockNumberAdderService();
-        var bill = new Bill(mockObj);
+        var mockService = new Mock<INumberAdderService>(); // Create a mock of INumberAdderService
 
+        // Setup the mock to track parameters
+        mockService.Setup(m => m.AddNumbers(It.IsAny<int>(), It.IsAny<int>()))
+                   .Returns(0); // Return value does not matter here
+
+        var bill = new Bill(mockService.Object);
+
+        // Call the method under test
         bill.CalculateTotal(19, 30);
 
-        Assert.Equal(19, mockObj.AddCalledWithNumber1);
-        Assert.Equal(30, mockObj.AddCalledWithNumber2);
+        // Verify that the mock was called with the correct parameters
+        mockService.Verify(m => m.AddNumbers(19, 30), Times.Once);
     }
 
     public static IEnumerable<object[]> GetTestCases()
@@ -57,13 +65,19 @@ public class BillTests
     [MemberData(nameof(GetTestCases))]
     public void CalculateTotal_ShouldMatchExpectedTotal(int cost1, int cost2, int expectedTotal)
     {
-        var mockObj = new MockNumberAdderService();
-        var bill = new Bill(mockObj);
+        var mockService = new Mock<INumberAdderService>(); // Create a mock of INumberAdderService
 
+        // Setup the mock to return the expected total based on input parameters
+        mockService.Setup(m => m.AddNumbers(cost1, cost2)).Returns(expectedTotal);
+
+        var bill = new Bill(mockService.Object);
+
+        // Call the method under test
         int total = bill.CalculateTotal(cost1, cost2);
 
+        // Assert that the total matches the expected value
         Assert.Equal(expectedTotal, total);
-        Assert.Equal(cost1, mockObj.AddCalledWithNumber1);
-        Assert.Equal(cost2, mockObj.AddCalledWithNumber2);
+        // Verify that the mock was called with the correct parameters
+        mockService.Verify(m => m.AddNumbers(cost1, cost2), Times.Once);
     }
 }

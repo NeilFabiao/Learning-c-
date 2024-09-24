@@ -1,5 +1,6 @@
-﻿// ConsoleApplication_Final/Calculator/Program.cs
+﻿//Calculator/Program.cs
 using System;
+using Moq; // Import Moq
 
 // Interface for basic number operations
 public interface INumberAdderService {
@@ -30,21 +31,6 @@ public class Bill {
     }
 }
 
-// Mock service for unit testing
-public class MockNumberAdderService : INumberAdderService {
-    public int? AddCalledWithNumber1 { get; private set; }
-    public int? AddCalledWithNumber2 { get; private set; }
-
-    // Property to allow setting the return value
-    public int ReturnFromAddNumbers { get; set; } = 100; // Default to 100
-
-    public int AddNumbers(int number1, int number2) {
-        AddCalledWithNumber1 = number1;
-        AddCalledWithNumber2 = number2;
-        return ReturnFromAddNumbers; // Return the value set by the property
-    }
-}
-
 // Main program
 class Program {
     static void Main(string[] args) {
@@ -54,18 +40,25 @@ class Program {
         Console.WriteLine($"Total using real service: {total}"); // Expected: 100
 
         // Using mock service
-        MockNumberAdderService mockService = new MockNumberAdderService();
-        Bill mockBill = new Bill(mockService);
+        var mockService = new Mock<INumberAdderService>(); // Create mock of INumberAdderService
+
+        // Setup the mock behavior
+        mockService.Setup(m => m.AddNumbers(It.IsAny<int>(), It.IsAny<int>()))
+                   .Returns(100); // Default return value
+
+        // Create Bill instance with the mock service
+        Bill mockBill = new Bill(mockService.Object);
         int mockTotal = mockBill.CalculateTotal(49, 51); 
         Console.WriteLine($"Total using mock service: {mockTotal}"); // Expected: 100
 
-        // Change the return value for different test scenarios
-        mockService.ReturnFromAddNumbers = 150; // Set a different return value
+        // Change the mock's return value for different test scenarios
+        mockService.Setup(m => m.AddNumbers(It.IsAny<int>(), It.IsAny<int>()))
+                   .Returns(150); // Change return value
+
         int modifiedTotal = mockBill.CalculateTotal(49, 51); 
         Console.WriteLine($"Modified total using mock service: {modifiedTotal}"); // Expected: 150
 
         // Verify mock was called with correct values
-        Console.WriteLine($"Mock Add Called With Number1: {mockService.AddCalledWithNumber1}"); // Expected: 49
-        Console.WriteLine($"Mock Add Called With Number2: {mockService.AddCalledWithNumber2}"); // Expected: 51
+        mockService.Verify(m => m.AddNumbers(49, 51), Times.Once);
     }
 }
